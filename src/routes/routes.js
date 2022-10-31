@@ -1,1 +1,14 @@
 // Se uniran las rutas Admin y Client
+import routerAdmin from "./routes.admin";
+import routerClient from "./routes.client";
+import {Error404} from "../pages"
+import {BasicLayout} from "../layouts"
+
+// const routes = [routerAdmin, routerClient] no [ [{}]  [{}]]
+const routes = [...routerAdmin, ...routerClient,
+    { layout: BasicLayout,component: Error404 }
+]; //[   {}   {}]
+
+
+
+export default routes;
