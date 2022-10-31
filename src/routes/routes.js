@@ -6,7 +6,7 @@ import {BasicLayout} from "../layouts"
 
 // const routes = [routerAdmin, routerClient] no [ [{}]  [{}]]
 const routes = [...routerAdmin, ...routerClient,
-    { layout: BasicLayout,component: Error404 }
+    { path: "*",layout: BasicLayout,component: Error404 }
 ]; //[   {}   {}]
 
 

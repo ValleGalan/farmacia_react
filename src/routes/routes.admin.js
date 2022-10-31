@@ -1,8 +1,8 @@
 import {AdminLayout} from "../layouts/AdminLayout"
-import {LoginAdmin} from "../pages/Admin"
+import {HomeAdmin} from "../pages/Admin"
 
 const routesAdmin=[
-    { path:"/admin", layout: AdminLayout,component: LoginAdmin },
+    { path:"/admin", layout: AdminLayout,component: HomeAdmin },
 ];
 
 export default routesAdmin;

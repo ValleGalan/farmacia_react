@@ -3,11 +3,10 @@ import { Routes, BrowserRouter, Router, Route } from "react-router-dom";
 import routes from "./routes";
 import {map} from "lodash";
 
-export function Navigation(){ //default borro
+export function Navigation(){ //siempre llama a este 1ro
     console.log("router->",routes);
     return(
         <div>
-            <h1>Welcome to React Router!</h1>
             <BrowserRouter>
             <Routes>
             {map(routes,(route,index)=>
