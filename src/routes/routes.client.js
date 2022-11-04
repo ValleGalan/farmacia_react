@@ -1,5 +1,5 @@
 import {ClientLayout} from "../layouts/ClientLayout/ClientLayout";
-import {Home} from "../pages/Client";
+import {Home} from "../pages/Client/Home";
 //import {Error404} from "../pages"
 
 

@@ -1,2 +1,3 @@
-export * from "./LoginAdmin/LoginAdmin"
-export *from "./HomeAdmin"
+export * from "./LoginAdmin"
+export * from "./HomeAdmin"
+export * from "./FarmaciaAdmin"

@@ -2,9 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//Importamos materialui PARA DAR ESTILOS AL FRONT
+import "react-toastify/dist/ReactToastify.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+//Importamos semantic PARA DAR ESTILOS AL FRONT
+import 'semantic-ui-css/semantic.min.css'
+
+//
+import {createRoot} from 'react-dom/client'
+
+//const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElement = document.getElementById('root');
+
+const root = createRoot(rootElement);
 root.render(
   
     <App />
