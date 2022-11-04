@@ -29,7 +29,7 @@ export async function getMeApi(token) {
     const url = `${BASE_API}/api/auth/me/`;
     const params = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`, //para validar el token
       },
     };
 

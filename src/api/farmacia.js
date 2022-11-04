@@ -10,13 +10,18 @@ export async function getFarmaciaApi() {
       throw error;
     }
   }
-
+//CORRECTO :D
   export async function addFarmaciaApi(data, token) {
     try {
       const formData = new FormData();
+      //campos o atributos que puedo añadir
       formData.append("imagen", data.imagen);
       formData.append("nombre", data.nombre);
-  
+      formData.append("ubicacion", data.ubicacion);
+      formData.append("localidad", data.localidad);
+      formData.append("turno_date", data.turno_date);
+      formData.append("turno_time", data.turno_time);
+
       const url = `${BASE_API}/api/farmacia_app/`;
       const params = {
         method: "POST",
@@ -37,7 +42,11 @@ export async function getFarmaciaApi() {
   export async function updateFarmaciaApi(id, data, token) {
     try {
       const formData = new FormData();
-      formData.append("title", data.title);
+      formData.append("nombre", data.nombre);
+      formData.append("ubicacion", data.ubicacion);
+      formData.append("localidad", data.localidad);
+      formData.append("turno_date", data.turno_date);
+      formData.append("turno_time", data.turno_time);
       if (data.image) formData.append("imagen", data.imagen);
   
       const url = `${BASE_API}/api/farmacia_app/${id}/`;

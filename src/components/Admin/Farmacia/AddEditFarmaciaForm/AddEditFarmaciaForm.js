@@ -8,7 +8,7 @@ import "./AddEditFarmaciaForm.scss";
 
 export function AddEditFarmaciaForm(props) {
   const { onClose, onRefetch, farmacia } = props;
-  const [previewImage, setPreviewImage] = useState(farmacia?.image || null);
+  const [previewImage, setPreviewImage] = useState(farmacia?.imagen || null);
   const { addFarmacia, updateFarmacia } = useFarmacia();
 
   const formik = useFormik({
@@ -30,35 +30,71 @@ export function AddEditFarmaciaForm(props) {
 
   const onDrop = useCallback(async (acceptedFile) => {
     const file = acceptedFile[0];
-    await formik.setFieldValue("image", file);
+    await formik.setFieldValue("imagen", file);
     setPreviewImage(URL.createObjectURL(file));
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: "image/jpeg, image/png",
+    accept: "imagen/jpeg, imagen/png",
     noKeyboard: true,
     multiple: false,
     onDrop,
   });
 
   return (
-    <Form className="add-edit-category-form" onSubmit={formik.handleSubmit}>
+    <Form className="add-edit-farmacia-form" onSubmit={formik.handleSubmit}>
+     
       <Form.Input
-        name="title"
+        name="nombre"
         placeholder="Nombre de la farmacia"
-        value={formik.values.title}
+        value={formik.values.nombre}
         onChange={formik.handleChange}
-        error={formik.errors.title}
+        error={formik.errors.nombre}
       />
+       <Form.Input
+        name="ubicacion"
+        placeholder="ubicacion de la farmacia"
+        value={formik.values.ubicacion}
+        onChange={formik.handleChange}
+        error={formik.errors.ubicacion}
+      />
+       <Form.Input
+        name="localidad"
+        placeholder="localidad de la farmacia"
+        value={formik.values.localidad}
+        onChange={formik.handleChange}
+        error={formik.errors.localidad}
+      />
+       <Form.Input
+        name="turno_date"
+        placeholder="turno_date de la farmacia"
+        value={formik.values.turno_date}
+        onChange={formik.handleChange}
+        error={formik.errors.turno_date}
+      />
+      <Form.Input
+        name="turno_time"
+        placeholder="turno_time de la farmacia"
+        value={formik.values.turno_time}
+        onChange={formik.handleChange}
+        error={formik.errors.turno_time}
+      />
+
+
+
+
+
+
 
       <Button
         type="button"
         fluid
-        color={formik.errors.image && "red"}
+        color={formik.errors.imagen && "red"}
         {...getRootProps()}
       >
         {previewImage ? "Cambiar imagen" : "Subir imagen"}
       </Button>
+
       <input {...getInputProps()} />
       <Image src={previewImage} fluid />
 
@@ -74,21 +110,34 @@ export function AddEditFarmaciaForm(props) {
 
 function initialValues(data) {
   return {
-    title: data?.title || "",
-    image: "",
+    nombre: data?.nombre || "",
+    ubicacion: data?.ubicacion || "",
+    localidad: data?.localidad || "",
+    turno_date: data?.turno_date || "",
+    turno_time: data?.turno_time || "",
+
+    imagen: "",
   };
 }
 
 function newSchema() {
   return {
-    title: Yup.string().required(true),
-    image: Yup.string().required(true),
+    nombre: Yup.string().required(true),
+    ubicacion: Yup.string().required(true),
+    localidad: Yup.string().required(true),
+    turno_date: Yup.string().required(true),
+    turno_time: Yup.string().required(true),
+    imagen: Yup.string().required(true),
   };
 }
 
 function updateSchema() {
   return {
-    title: Yup.string().required(true),
-    image: Yup.string(),
+    nombre: Yup.string().required(true),
+    ubicacion: Yup.string().required(true),
+    localidad: Yup.string().required(true),
+    turno_date: Yup.string().required(true),
+    turno_time: Yup.string().required(true),
+    imagen: Yup.string(),
   };
 }

@@ -4,14 +4,19 @@ import { map } from "lodash";
 import "./TableFarmaciaAdmin.scss";
 
 export function TableFarmaciaAdmin(props) {
+
   const { farmacias, updateFarmacia, deleteFarmacia } = props;
 
   return (
     <Table className="table-farmacia-admin">
       <Table.Header>
         <Table.Row>
+          <Table.HeaderCell>Nombre</Table.HeaderCell>
+          <Table.HeaderCell>Ubicacion</Table.HeaderCell>
+          <Table.HeaderCell>Localidad</Table.HeaderCell>
+          <Table.HeaderCell>Fecha</Table.HeaderCell>
+          <Table.HeaderCell>Hora</Table.HeaderCell>
           <Table.HeaderCell>Imagen</Table.HeaderCell>
-          <Table.HeaderCell>Farmacia</Table.HeaderCell>
           <Table.HeaderCell></Table.HeaderCell>
         </Table.Row>
       </Table.Header>
@@ -19,10 +24,13 @@ export function TableFarmaciaAdmin(props) {
       <Table.Body>
         {map(farmacias, (farmacia, index) => (
           <Table.Row key={index}>
-            <Table.Cell width={2}>
-              <Image src={farmacia.image} />
-            </Table.Cell>
-            <Table.Cell>{farmacia.title}</Table.Cell>
+
+            <Table.Cell>{farmacia.nombre}</Table.Cell>
+            <Table.Cell>{farmacia.ubicacion}</Table.Cell>
+            <Table.Cell>{farmacia.localidad}</Table.Cell>
+            <Table.Cell>{farmacia.turno_date}</Table.Cell>
+            <Table.Cell>{farmacia.turno_time}</Table.Cell>
+            <Table.Cell width={2}> <Image src={farmacia.imagen} /> </Table.Cell>
 
             <Actions
               farmacias={farmacias}
@@ -38,7 +46,7 @@ export function TableFarmaciaAdmin(props) {
 
 function Actions(props) {
   const { farmacia, updateFarmacia, deleteFarmacia } = props;
-
+console.log(farmacia); //AQUIN ES EL PROBLEMA
   return (
     <Table.Cell textAlign="right">
       <Button icon onClick={() => updateFarmacia(farmacia)}>

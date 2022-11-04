@@ -1,2 +1,2 @@
-export * from "./AddEditFarmaciaForm/";
+export * from "./AddEditFarmaciaForm/AddEditFarmaciaForm";
 export * from "./TableFarmaciaAdmin/TableFarmaciaAdmin";

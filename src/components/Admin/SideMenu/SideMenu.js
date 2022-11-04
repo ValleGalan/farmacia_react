@@ -22,16 +22,19 @@ function MenuLeft(props) {
   console.log(auth);//comprobar que el administrador entre
   return (
     <Menu fixed="left" borderless className="side" vertical>
-      <Menu.Item as={Link} to={"/admin"} active={pathname === "/admin"}>
+      <Menu.Item as={Link} to={"/admin"} active={pathname === "/farmacias"}>
         <Icon name="home" /> Farmacias
       </Menu.Item>
+
+
+
 
     </Menu>
   );
 }
 /*
 Esto es una validacion para que le aparezca solo al admin pero 
-lo voy a omitir
+lo voy a omitir USUARIOS !!
       {auth.me?.is_staff && (
         <Menu.Item
           as={Link}

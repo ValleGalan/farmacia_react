@@ -1,9 +1,7 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+import { Modal } from "semantic-ui-react";
 import "./ModalBasic.scss";
 
-//
 export function ModalBasic(props) {
   const { show, size, title, children, onClose } = props;
 
@@ -12,8 +10,6 @@ export function ModalBasic(props) {
       {title && <Modal.Header>{title}</Modal.Header>}
       <Modal.Content>{children}</Modal.Content>
     </Modal>
-
-
   );
 }
 

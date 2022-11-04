@@ -48,10 +48,11 @@ export function useFarmacia() {
     }
   };
 
-  const deleteFarmacia = async (id) => {
+  const deleteFarmacia = async (nombre) => {
+    console.log("esta entrando");
     try {
       setLoading(true);
-      await deleteFarmaciaApi(id, auth.token);
+      await deleteFarmaciaApi(nombre, auth.token);
       setLoading(false);
     } catch (error) {
       setLoading(false);
