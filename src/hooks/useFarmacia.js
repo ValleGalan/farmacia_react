@@ -38,6 +38,8 @@ export function useFarmacia() {
   };
 
   const updateFarmacia = async (id, data) => {
+    console.log("esta entrando para editar ");
+    console.log(" el ID"+ id);
     try {
       setLoading(true);
       await updateFarmaciaApi(id, data, auth.token);
@@ -48,11 +50,12 @@ export function useFarmacia() {
     }
   };
 
-  const deleteFarmacia = async (nombre) => {
-    console.log("esta entrando");
+  const deleteFarmacia = async (id) => {
+    console.log("esta entrando para eliminar ");
+    console.log(" el ID"+ id);
     try {
       setLoading(true);
-      await deleteFarmaciaApi(nombre, auth.token);
+      await deleteFarmaciaApi(id, auth.token);
       setLoading(false);
     } catch (error) {
       setLoading(false);

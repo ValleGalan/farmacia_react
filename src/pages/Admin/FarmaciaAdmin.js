@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Loader } from "semantic-ui-react";
-import {  TableFarmaciaAdmin, AddEditFarmaciaForm} from "../../components/Admin/Farmacia";
+import {TableFarmaciaAdmin, AddEditFarmaciaForm} from "../../components/Admin/Farmacia";
+
 import {HeaderPage} from "../../components/Admin/HeaderPage/HeaderPage"
 import { ModalBasic } from "../../components/Common/ModalBasic/ModalBasic";
 import { useFarmacia } from "../../hooks/useFarmacia";
@@ -10,7 +11,7 @@ export function  FarmaciaAdmin() {
   const [titleModal, setTitleModal] = useState(null);
   const [contentModal, setContentModal] = useState(null);
   const [refetch, setRefetch] = useState(false);
-  const { loading, farmacias, getFarmacias, deleteFarmacia } = useFarmacia();
+  const { loading, farmacias, getFarmacias, deleteFarmacia} = useFarmacia();  
 
   useEffect(() => {getFarmacias()}, [refetch]);
 
@@ -26,25 +27,27 @@ export function  FarmaciaAdmin() {
   };
 
   const updateFarmacia = (data) => {
+    console.log("Editando Farmacia...")
+    console.log("Edicion: "+data);
+    
     setTitleModal("Actualizar Farmacia");
     setContentModal(
-      <AddEditFarmaciaForm
-        onClose={openCloseModal}
-        onRefetch={onRefetch}
-        farmacias={data}
-      />
+      <AddEditFarmaciaForm onClose={openCloseModal}  onRefetch={onRefetch} farmacia={data}   />
     );
     openCloseModal();
+    
   };
 
+ 
   const onDeleteFarmacia = async (data) => {
     console.log(data);
-   // const result = window.confirm(`¿Eliminar Farmacia ${data.nombre}?`);
-    //if (result) {
-      await deleteFarmacia(data.nombre);
+    const result = window.confirm(`¿Eliminar Farmacia ${data.nombre}?`);
+    if (result) {
+      await deleteFarmacia(data.id);
       onRefetch();
-   // }
+    }
   };
+ 
 
   return (
     <>
@@ -53,9 +56,7 @@ export function  FarmaciaAdmin() {
         btnTitle="Nueva Farmacia"
         btnClick={addFarmacia}
       />
-      
-      <div>AQUI IBA ESO DE ABAJO</div>
-      
+            
       {loading ? (
         <Loader active inline="centered">
           Cargando...
@@ -82,24 +83,3 @@ export function  FarmaciaAdmin() {
     </>
   );
 }
-/*
-
-
-{loading ? (
-        <Loader active inline="centered">
-          Cargando...
-        </Loader>
-      ) : (
-        <TableFarmaciaAdmin
-          farmacias={farmacias}
-          updateFarmacia={updateFarmacia}
-          deleteFarmacia={onDeleteFarmacia}
-        />
-      )}
-    <ModalBasic
-        show={showModal}
-        onClose={openCloseModal}
-        title={titleModal}
-        children={contentModal}
-      /> 
-*/

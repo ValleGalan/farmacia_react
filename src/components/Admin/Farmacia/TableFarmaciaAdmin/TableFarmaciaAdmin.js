@@ -5,7 +5,7 @@ import "./TableFarmaciaAdmin.scss";
 
 export function TableFarmaciaAdmin(props) {
 
-  const { farmacias, updateFarmacia, deleteFarmacia } = props;
+  const { farmacias, updateFarmacia,deleteFarmacia} = props;  
 
   return (
     <Table className="table-farmacia-admin">
@@ -33,7 +33,7 @@ export function TableFarmaciaAdmin(props) {
             <Table.Cell width={2}> <Image src={farmacia.imagen} /> </Table.Cell>
 
             <Actions
-              farmacias={farmacias}
+              farmacia={farmacia}
               updateFarmacia={updateFarmacia}
               deleteFarmacia={deleteFarmacia}
             />
@@ -45,16 +45,14 @@ export function TableFarmaciaAdmin(props) {
 }
 
 function Actions(props) {
-  const { farmacia, updateFarmacia, deleteFarmacia } = props;
-console.log(farmacia); //AQUIN ES EL PROBLEMA
+  const { farmacia, updateFarmacia,deleteFarmacia} = props; 
   return (
     <Table.Cell textAlign="right">
-      <Button icon onClick={() => updateFarmacia(farmacia)}>
-        <Icon name="pencil" />
-      </Button>
+      <Button icon onClick={() => updateFarmacia(farmacia)}> <Icon name="pencil" />  </Button>
       <Button icon negative onClick={() => deleteFarmacia(farmacia)}>
         <Icon name="close" />
       </Button>
+
     </Table.Cell>
   );
 }

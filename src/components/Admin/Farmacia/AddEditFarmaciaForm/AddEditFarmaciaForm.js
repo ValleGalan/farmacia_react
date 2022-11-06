@@ -35,7 +35,7 @@ export function AddEditFarmaciaForm(props) {
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: "imagen/jpeg, imagen/png",
+    accept: "",//"  en la pagina no lo acepta asiq verXD  imagen/jpeg, imagen/.jpg,  imagen/.png
     noKeyboard: true,
     multiple: false,
     onDrop,
@@ -79,11 +79,6 @@ export function AddEditFarmaciaForm(props) {
         onChange={formik.handleChange}
         error={formik.errors.turno_time}
       />
-
-
-
-
-
 
 
       <Button
