@@ -54,7 +54,7 @@ export function  FarmaciaAdmin() {
       <HeaderPage
         title="Farmacias"
         btnTitle="Nueva Farmacia"
-        btnClick={addFarmacia}
+        btnClick={addFarmacia} 
       />
             
       {loading ? (

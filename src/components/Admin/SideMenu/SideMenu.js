@@ -23,7 +23,8 @@ function MenuLeft(props) {
   return (
     <Menu fixed="left" borderless className="side" vertical>
       <Menu.Item as={Link} to={"/admin"} active={pathname === "/farmacias"}>
-        <Icon name="home" /> Farmacias
+        <Icon name="hospital" circular /> Farmacias
+        
       </Menu.Item>
 
 

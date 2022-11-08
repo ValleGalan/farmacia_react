@@ -50,6 +50,7 @@ export function useFarmacia() {
     }
   };
 
+  
   const deleteFarmacia = async (id) => {
     console.log("esta entrando para eliminar ");
     console.log(" el ID"+ id);

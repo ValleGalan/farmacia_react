@@ -18,9 +18,11 @@ export async function getFarmaciaApi() {
       formData.append("imagen", data.imagen);
       formData.append("nombre", data.nombre);
       formData.append("ubicacion", data.ubicacion);
+      formData.append("telefono", data.telefono);
       formData.append("localidad", data.localidad);
       formData.append("turno_date", data.turno_date);
-      formData.append("turno_time", data.turno_time);
+      formData.append("turno_timeFrom", data.turno_timeFrom);
+      formData.append("turno_timeTo", data.turno_timeTo);
 
       const url = `${BASE_API}/api/farmacia_app/`;
       const params = {
@@ -45,8 +47,12 @@ export async function getFarmaciaApi() {
       formData.append("nombre", data.nombre);
       formData.append("ubicacion", data.ubicacion);
       formData.append("localidad", data.localidad);
+      formData.append("telefono", data.telefono);
+
       formData.append("turno_date", data.turno_date);
-      formData.append("turno_time", data.turno_time);
+      formData.append("turno_timeFrom", data.turno_timeFrom);
+      formData.append("turno_timeTo", data.turno_timeTo);
+
       if (data.image) formData.append("imagen", data.imagen);
   
       const url = `${BASE_API}/api/farmacia_app/${id}/`;

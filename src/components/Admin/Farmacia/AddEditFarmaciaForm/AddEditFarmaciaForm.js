@@ -40,10 +40,12 @@ export function AddEditFarmaciaForm(props) {
     multiple: false,
     onDrop,
   });
+//     <Button basic color='green' content="mapa" with="40px" > </Button>
 
   return (
     <Form className="add-edit-farmacia-form" onSubmit={formik.handleSubmit}>
-     
+
+
       <Form.Input
         name="nombre"
         placeholder="Nombre de la farmacia"
@@ -65,6 +67,13 @@ export function AddEditFarmaciaForm(props) {
         onChange={formik.handleChange}
         error={formik.errors.localidad}
       />
+      <Form.Input
+        name="telefono"
+        placeholder="telefono de la farmacia"
+        value={formik.values.telefono}
+        onChange={formik.handleChange}
+      //  error={formik.errors.telefono}
+      />
        <Form.Input
         name="turno_date"
         placeholder="turno_date de la farmacia"
@@ -73,11 +82,18 @@ export function AddEditFarmaciaForm(props) {
         error={formik.errors.turno_date}
       />
       <Form.Input
-        name="turno_time"
-        placeholder="turno_time de la farmacia"
-        value={formik.values.turno_time}
+        name="turno_timeFrom"
+        placeholder="turno desde"
+        value={formik.values.turno_timeFrom}
         onChange={formik.handleChange}
-        error={formik.errors.turno_time}
+        //error={formik.errors.turno_timeFrom}
+      />
+      <Form.Input
+        name="turno_timeTo"
+        placeholder="turno hasta"
+        value={formik.values.turno_timeTo}
+        onChange={formik.handleChange}
+      //  error={formik.errors.turno_timeTo}
       />
 
 
@@ -92,6 +108,8 @@ export function AddEditFarmaciaForm(props) {
 
       <input {...getInputProps()} />
       <Image src={previewImage} fluid />
+
+      
 
       <Button
         type="submit"
@@ -108,8 +126,11 @@ function initialValues(data) {
     nombre: data?.nombre || "",
     ubicacion: data?.ubicacion || "",
     localidad: data?.localidad || "",
+    telefono: data?.telefono || "",
     turno_date: data?.turno_date || "",
-    turno_time: data?.turno_time || "",
+    turno_timeFrom: data?.turno_timeFrom || "",
+    turno_timeTo: data?.turno_timeTo || "",
+
 
     imagen: "",
   };
@@ -120,8 +141,11 @@ function newSchema() {
     nombre: Yup.string().required(true),
     ubicacion: Yup.string().required(true),
     localidad: Yup.string().required(true),
+  //  telefono: Yup.string().required(true),
     turno_date: Yup.string().required(true),
-    turno_time: Yup.string().required(true),
+   // turno_timeFrom: Yup.string().required(true),
+    //turno_timeTo: Yup.string().required(true),
+
     imagen: Yup.string().required(true),
   };
 }
@@ -131,8 +155,11 @@ function updateSchema() {
     nombre: Yup.string().required(true),
     ubicacion: Yup.string().required(true),
     localidad: Yup.string().required(true),
+   // telefono: Yup.string().required(true),
     turno_date: Yup.string().required(true),
-    turno_time: Yup.string().required(true),
+   // turno_timeFrom: Yup.string().required(true),
+    //turno_timeTo: Yup.string().required(true),
+
     imagen: Yup.string(),
   };
 }
