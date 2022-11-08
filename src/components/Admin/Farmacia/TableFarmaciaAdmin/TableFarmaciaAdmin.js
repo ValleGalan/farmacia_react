@@ -20,6 +20,7 @@ function exampleReducer(state, action) {
     case 'START_SEARCH':
       return { ...state, loading: true, value: action.query }
     case 'FINISH_SEARCH':
+
       return { ...state, loading: false, results: action.results }
     case 'UPDATE_SELECTION':
       return { ...state, value: action.selection }
@@ -28,6 +29,8 @@ function exampleReducer(state, action) {
       throw new Error()
   }
 }
+
+
 export function TableFarmaciaAdmin(props) {
   //DENTRO
   const { farmacias, updateFarmacia,deleteFarmacia} = props;  
@@ -38,7 +41,8 @@ export function TableFarmaciaAdmin(props) {
   const timeoutRef = React.useRef()
 
   const handleSearchChange = React.useCallback((e, data) => {
-   
+    //this.setState({ isLoading: true, value });
+
     clearTimeout(timeoutRef.current)
     dispatch({ type: 'START_SEARCH', query: data.value })
 
@@ -48,21 +52,14 @@ export function TableFarmaciaAdmin(props) {
         return
       }
 
-      const re = new RegExp(_.escapeRegExp(data.value), 'i')
-      const isMatch = (result) => re.test(result.nombre)
-      console.log(re);
-      console.log(isMatch);
+     // const re = new RegExp(_.escapeRegExp(data.value), 'i')
+      const isMatch = (result) =>(result.nombre)// re.test
       //console.log(results);
 
        dispatch({
         type: 'FINISH_SEARCH',
-        results: _.filter(farmacias,  
-          function(o) {
-            return o.nombre;
-         }
-          ),//isMatch
+        results: _.filter(farmacias, isMatch  ),//isMatch
       })
-      console.log(results);
 
     }, 300)
   }, [])
@@ -71,9 +68,9 @@ export function TableFarmaciaAdmin(props) {
       clearTimeout(timeoutRef.current)
     }
   }, [])
-  return (
-   
-   <div>
+
+
+  /*
     <Search  
     loading={loading}
     placeholder="Buscar" 
@@ -84,6 +81,11 @@ export function TableFarmaciaAdmin(props) {
     results={farmacias}
     value={value}
     ></Search>
+  */
+  return (
+   
+   <div>
+  
 
      <Table className="table-farmacia-admin">
       <Table.Header>

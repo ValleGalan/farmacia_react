@@ -8,7 +8,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import "./LoginFormulario.scss";
 
 export function LoginFormulario() {
-  console.log(useAuth);
+ // console.log(useAuth);
   const { login } = useAuth();
 
   const formik = useFormik({
